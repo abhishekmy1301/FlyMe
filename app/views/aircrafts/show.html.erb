@@ -2,3 +2,12 @@
 <h2><%= @aircraft.description %></h2>
 <h2><%= @aircraft.capacity %></h2>
 <h2><%= @aircraft.price %></h2>
+
+<div class="flat-card-actions">
+            <%# <%= link_to "More info", aircraft_path(aircraft) %>
+            <%= link_to "Edit", edit_aircraft_path(@aircraft), class: "ms-3 text-warning" %>
+            <%= link_to "Remove", aircraft_path(@aircraft),
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                class: "ms-3 text-danger"
+            %>
+          </div>

@@ -6,7 +6,6 @@ class AircraftsController < ApplicationController
   end
 
   def show
-    @aircraft = set_aircraft
   end
 
   def new
@@ -21,17 +20,17 @@ class AircraftsController < ApplicationController
   end
 
   def edit
-    @aircraft = set_aircraft
   end
 
   def update
-    @aircraft = set_aircraft
-    @aircraft.update(aircraft_params)
-    redirect_to aircraft_path(aircraft)
+    if @aircraft.update(aircraft_params)
+    redirect_to aircraft_path(@aircraft)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    @aircraft = set_aircraft
     @aircraft.destroy
     redirect_to aircrafts_path, status:  :see_other
   end
