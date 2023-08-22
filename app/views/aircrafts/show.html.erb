@@ -1,13 +1,20 @@
-<h1><%= @aircraft.model %></h1>
-<h2><%= @aircraft.description %></h2>
-<h2><%= @aircraft.capacity %></h2>
-<h2><%= @aircraft.price %></h2>
-
-<div class="flat-card-actions">
-            <%# <%= link_to "More info", aircraft_path(aircraft) %>
-            <%= link_to "Edit", edit_aircraft_path(@aircraft), class: "ms-3 text-warning" %>
-            <%= link_to "Remove", aircraft_path(@aircraft),
-                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                class: "ms-3 text-danger"
-            %>
-          </div>
+<div class="card text-center" style="width: 50rem;">
+  <%# <%= link_to "More info", aircraft_path(aircraft) %>
+  <div class="card-body">
+    <h2 class="card-title"><%= @aircraft.model %></h5>
+    <br>
+    <hr>
+    <p class="card-text"><%= @aircraft.description %></p>
+    <br>
+    <h5>Capacity: <%= @aircraft.capacity %></h5>
+    <br>
+    <h5>Price: <%= @aircraft.price %></h5>
+    <br>
+    <hr>
+    <%= link_to "Edit", edit_aircraft_path(@aircraft), class:"card-link" %>
+    <%= link_to "Remove", aircraft_path(@aircraft),
+        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+        class: "ms-3 text-danger"
+    %>
+  </div>
+</div>
