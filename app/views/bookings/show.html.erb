@@ -1,13 +1,14 @@
 <h1><%= @booking.aircraft.model %></h1>
 <h2><%= @booking.departure_time %></h2>
-<h2><%= @booking.takeoff %></h2>
-<h2><%= @booking.landing %></h2>
+<h2><%= @booking.takeoff.upcase %></h2>
+<h2><%= @booking.landing.upcase %></h2>
 
 <div class="flat-card-actions">
-            <%# <%= link_to "More info", booking_path(booking) %>
-            <%= link_to "Edit", edit_booking_path(@booking), class: "ms-3 text-warning" %>
-            <%= link_to "Remove", booking_path(@booking),
-                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                class: "ms-3 text-danger"
-            %>
-          </div>
+  <%# <%= link_to "More info", booking_path(booking) %>
+  <%= link_to "Edit", edit_booking_path(@booking), class: "ms-3 text-warning" %>
+  <%= link_to "Remove", booking_path(@booking),
+      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+      class: "ms-3 text-danger"
+  %>
+  <%= link_to "Back to all bookings", booking_path(@booking) %>
+</div>
