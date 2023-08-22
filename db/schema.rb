@@ -26,6 +26,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_22_140953) do
     t.index ["user_id"], name: "index_aircrafts_on_user_id"
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "aircraft_id", null: false
+    t.datetime "departure_time", precision: nil
+    t.string "takeoff"
+    t.string "landing"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aircraft_id"], name: "index_bookings_on_aircraft_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -39,4 +51,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_22_140953) do
   end
 
   add_foreign_key "aircrafts", "users"
+  add_foreign_key "bookings", "aircrafts"
+  add_foreign_key "bookings", "users"
 end
