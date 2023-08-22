@@ -1,5 +1,5 @@
 <ul>
-<% @bookings.each do |booking| %>
-<li><%= booking.takeoff %></li>
+<% @bookings.each_with_index do |booking, i| %>
+  <li><%= "#{i + 1}. From #{booking.takeoff.upcase} to #{booking.landing.upcase} at #{booking.departure_time} \t (Booking id: #{booking.id})" %></li>
 <% end %>
 </ul>
