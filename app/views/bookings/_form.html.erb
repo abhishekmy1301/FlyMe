@@ -1,0 +1,6 @@
+<%= simple_form_for(@booking) do |f| %>
+  <%= f.input :departure_time %>
+  <%= f.input :takeoff %>
+  <%= f.input :landing %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>
