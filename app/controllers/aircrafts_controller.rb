@@ -2,7 +2,14 @@ class AircraftsController < ApplicationController
   before_action :set_aircraft, only: [:show, :edit, :update, :destroy]
 
   def index
-    @aircrafts = Aircraft.all
+    if params[:query].present?
+      @query = params[:query]
+      @aircrafts = Aircraft.where("model LIKE ?", "%#{params[:query]}%")
+      # Preventing SQL Injection and Database error for
+      # unknown characters
+    else
+      @aircrafts = Aircraft.all
+    end
   end
 
   def show
@@ -24,7 +31,7 @@ class AircraftsController < ApplicationController
 
   def update
     if @aircraft.update(aircraft_params)
-    redirect_to aircraft_path(@aircraft)
+      redirect_to aircraft_path(@aircraft)
     else
       render :new, status: :unprocessable_entity
     end
@@ -38,7 +45,7 @@ class AircraftsController < ApplicationController
   private
 
   def aircraft_params
-    params.require(:aircraft).permit(:model, :description, :capacity, :price)
+    params.require(:aircraft).permit(:model, :description, :capacity, :price, :picture_url)
   end
 
   def set_aircraft
