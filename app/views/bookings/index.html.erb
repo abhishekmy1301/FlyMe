@@ -1,5 +1,11 @@
-<ul>
-<% @bookings.each do |booking| %>
-<li><%= booking.takeoff %></li>
-<% end %>
-</ul>
+<div class="row col-md-8">
+  <ul>
+  <% @bookings.each_with_index do |booking, i| %>
+    <div class="flex align-items-center">
+      <%= "#{i + 1}. From #{booking.takeoff.upcase} to #{booking.landing.upcase} at #{booking.departure_time} \t Booking id: " %>
+      <%= link_to booking["id"], booking_path(booking["id"].to_i) %>
+    </div>
+
+  <% end %>
+  </ul>
+</div>
