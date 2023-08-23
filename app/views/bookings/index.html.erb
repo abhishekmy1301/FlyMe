@@ -1,10 +1,12 @@
-<div class="row col-md-8">
+<div class="container mt-4 ">
   <ul>
   <% @bookings.each_with_index do |booking, i| %>
-    <div class="flex align-items-center">
-      <%= "#{i + 1}. From #{booking.takeoff.upcase} to #{booking.landing.upcase} at #{booking.departure_time} \t Booking id: " %>
-      <%= link_to booking["id"], booking_path(booking["id"].to_i) %>
+    <div id="booking"class="row py-4 border border-dark my-3 bg-gradient text-center rounded">
+        <%= link_to booking_path(booking), class: "text-decoration-none text-dark " do %>
+          <%= "#{i + 1}. From #{booking.takeoff.upcase} to #{booking.landing.upcase} at #{booking.departure_time} \t Booking id: #{booking.id}" %>
+        <% end %>
     </div>
+
 
   <% end %>
   </ul>

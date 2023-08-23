@@ -1,13 +1,18 @@
-<h1><%= @aircraft.model %></h1>
-<h2><%= @aircraft.description %></h2>
-<h2><%= @aircraft.capacity %></h2>
-<h2><%= @aircraft.price %></h2>
+<h1>Aircraft Model: <%= @aircraft.model %></h1>
+<h3><%= @aircraft.description %></h3>
+<h2>Capacity: <%= @aircraft.capacity %></h2>
+<h2> Rate per hour: USD<%= @aircraft.price %></h2>
 
-<div class="flat-card-actions">
+<div class="flat-card-actions d-flex justify-content-center ">
   <%# <%= link_to "More info", aircraft_path(aircraft) %>
-  <%= link_to "Edit", edit_aircraft_path(@aircraft), class: "ms-3 text-warning" %>
-  <%= link_to "Remove", aircraft_path(@aircraft),
-      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-      class: "ms-3 text-danger"
-  %>
+  <div class="border-dark my-3">
+    <%= link_to "Add Booking", new_aircraft_booking_path(@aircraft), class: "ms-3 text-success text-decoration-none" %>
+    <%= link_to "Edit", edit_aircraft_path(@aircraft), class: "ms-3 text-warning text-decoration-none" %>
+    <%= link_to "Remove", aircraft_path(@aircraft),
+        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+        class: "ms-3 text-danger text-decoration-none"
+    %>
+    <%= link_to "Back to all aircrafts", aircrafts_path, class: "ms-3 text-primary text-decoration-none border-dark my-3" %>
+  </div>
+
 </div>
