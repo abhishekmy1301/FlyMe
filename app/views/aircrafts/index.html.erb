@@ -1,7 +1,7 @@
-<div class="container mt-3">
+<div class="container index mt-3">
   <div class="row">
     <div class="col-12">
-      <h1>All our Aircrafts <%= link_to "+", new_aircraft_path, class: "ms-3 text-success text-decoration-none" %></h1>
+      <h1>Range of aircrafts <%= link_to "+", new_aircraft_path, class: "ms-3 text-success text-decoration-none" %></h1>
     </div>
   </div>
 
@@ -10,7 +10,7 @@
       <% if @query %>
         <p>You searched for <strong><%= @query %></strong>. We found <%= @aircrafts.count %> aircrafts out of our <%= Aircraft.count %> on our website.</p>
       <% else %>
-        <p>All <%= Aircraft.count %> aircrafts.</p>
+        <p>Select an aircraft</p>
       <% end %>
     </div>
   </div>
@@ -37,7 +37,7 @@
             </div>
           </div>
           <div class="flat-card-actions">
-            <%# <%= link_to "More info", flat_path(flat) %>
+            <%= link_to "Add Booking", new_aircraft_booking_path(aircraft), class: "ms-3 text-success text-decoration-none" %>
             <%= link_to "View", aircraft_path(aircraft), class: "ms-3 text-primary" %>
             <%= link_to "Edit", edit_aircraft_path(aircraft), class: "ms-3 text-warning" %>
             <%= link_to "Remove", aircraft_path(aircraft),
