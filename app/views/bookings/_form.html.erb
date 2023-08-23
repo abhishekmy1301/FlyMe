@@ -1,4 +1,4 @@
-<%= simple_form_for(@booking) do |f| %>
+<%= simple_form_for [@aircraft, @booking] do |f| %>
   <%= f.input :departure_time %>
   <%= f.input :takeoff %>
   <%= f.input :landing %>
