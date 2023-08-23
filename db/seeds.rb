@@ -56,30 +56,30 @@ aircraft3 = Aircraft.create!(
   user: user2
 )
 
-puts "Creating bookings"
+# puts "Creating bookings"
 
-Booking.create!(
-  departure_time: Time.new(2023,8, 24),
-  takeoff: "LHR",
-  landing: "DXB",
-  aircraft: aircraft1,
-  user: user1
-)
+# Booking.create!(
+#   departure_time: Time.new(2023,8, 24),
+#   takeoff: "LHR",
+#   landing: "DXB",
+#   aircraft: aircraft1,
+#   user: user1
+# )
 
-Booking.create!(
-  departure_time: Time.new(2023,8, 26),
-  takeoff: "LAX",
-  landing: "JFK",
-  aircraft: aircraft2,
-  user: user2
-)
+# Booking.create!(
+#   departure_time: Time.new(2023,8, 26),
+#   takeoff: "LAX",
+#   landing: "JFK",
+#   aircraft: aircraft2,
+#   user: user2
+# )
 
-Booking.create!(
-  departure_time: Time.new(2023,8, 30),
-  takeoff: "JFK",
-  landing: "DEN",
-  aircraft: aircraft3,
-  user: user2
-)
+# Booking.create!(
+#   departure_time: Time.new(2023,8, 30),
+#   takeoff: "JFK",
+#   landing: "DEN",
+#   aircraft: aircraft3,
+#   user: user2
+# )
 
 puts "Finished!"
