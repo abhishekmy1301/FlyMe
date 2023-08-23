@@ -1,7 +1,7 @@
-<h1><%= @booking.aircraft.model %></h1>
-<h2><%= @booking.departure_time %></h2>
-<h2><%= @booking.takeoff.upcase %></h2>
-<h2><%= @booking.landing.upcase %></h2>
+<h1>Aircraft Model: <%= @booking.aircraft.model %></h1>
+<h2>Departure Time: <%= @booking.departure_time %></h2>
+<h2>From: <%= @booking.takeoff.upcase %></h2>
+<h2>To: <%= @booking.landing.upcase %></h2>
 
 <div class="flat-card-actions">
   <%# <%= link_to "More info", booking_path(booking) %>
