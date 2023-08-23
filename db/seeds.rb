@@ -38,7 +38,6 @@ aircraft1 = Aircraft.create!(
   user: user1
 )
 
-
 aircraft2 = Aircraft.create!(
   model: 'Bombardier Global 8000',
   description: "The Bombardier Global 8000 is the worlds longest-range private jet. It has a range of 14,631 kilometres, an unrivalled record. The Global 8000 is an aircraft for faster connections. It offers the possibility to travel around the world with no or very few stopovers.",
@@ -48,13 +47,38 @@ aircraft2 = Aircraft.create!(
   user: user1
 )
 
-
 aircraft3 = Aircraft.create!(
   model: 'Dassault Falcon 8X',
   description: "The Dassault Falcon 8X is a high-performance private jet that can travel up to 11,945 kilometers on a single tank of fuel. It is equipped with three Pratt & Whitney Canada PW307D engines, each with 6,722 pounds of thrust.",
   picture_url: 'https://images.dassault-aviation.com/f_auto,q_auto,g_center,dpr_auto/wp-auto-upload/2/files/2022/03/DA00017252_S.jpg',
   capacity: 12,
   price: 10400,
+  user: user2
+)
+
+puts "Creating bookings"
+
+Booking.create!(
+  departure_time: Time.new(2023,8, 24),
+  takeoff: "LHR",
+  landing: "DXB",
+  aircraft: aircraft1,
+  user: user1
+)
+
+Booking.create!(
+  departure_time: Time.new(2023,8, 26),
+  takeoff: "LAX",
+  landing: "JFK",
+  aircraft: aircraft2,
+  user: user2
+)
+
+Booking.create!(
+  departure_time: Time.new(2023,8, 30),
+  takeoff: "JFK",
+  landing: "DEN",
+  aircraft: aircraft3,
   user: user2
 )
 
