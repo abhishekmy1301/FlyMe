@@ -1,7 +1,7 @@
 <div class="container mt-4 ">
   <ul>
   <% @bookings.each_with_index do |booking, i| %>
-    <div class="row py-4 border border-dark my-3 bg-info bg-gradient text-center rounded">
+    <div id="booking"class="row py-4 border border-dark my-3 bg-gradient text-center rounded">
         <%= link_to booking_path(booking), class: "text-decoration-none text-dark " do %>
           <%= "#{i + 1}. From #{booking.takeoff.upcase} to #{booking.landing.upcase} at #{booking.departure_time} \t Booking id: #{booking.id}" %>
         <% end %>
