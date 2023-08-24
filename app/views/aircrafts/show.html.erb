@@ -12,9 +12,12 @@
       <h5> Rate per hour: $<%= ((@aircraft.price.to_f.round())).to_fs(:delimited) %></h5>
       <br>
       <p>
-        Owned By: <%= @aircraft.user.email %>
+
         <% if current_user == @aircraft.user %>
+        Owned By: <%= @aircraft.user.email %>
         (You)
+        <% else %>
+        Owned By: <%= @aircraft.user.email.gsub(/.{0,6}@/, '******@') %>
         <% end %>
       </p>
     </div>

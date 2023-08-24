@@ -32,11 +32,7 @@
 
   <div class="row">
     <div class="col">
-      <% if @query %>
-        <p>You searched for <strong><%= @query %></strong>. We found <%= @aircrafts.count %> aircrafts out of our <%= Aircraft.count %> on our website.</p>
-      <% else %>
         <h4>Select an aircraft</h4>
-      <% end %>
     </div>
   </div>
 
@@ -45,7 +41,7 @@
   <% @other_aircrafts = @aircrafts.reject { |aircraft| aircraft.user == current_user } %>
 
   <div class="row">
-    <% @aircrafts.each do |aircraft| %>
+    <% @other_aircrafts.each do |aircraft| %>
       <div class="col-md-4">
         <div class="flat-card align-items-center">
           <div class="flat-card-image" style="background-image: url('<%= aircraft.picture_url %>')"></div>
@@ -78,5 +74,53 @@
       </div>
     <% end %>
   </div>
-  <%# ENDS HERE %>
+
+  <div class="row">
+    <div class="col-12">
+
+      <h1>
+        Your Aircraft Fleets
+        <% if user_signed_in? %>
+        <%= link_to "+", new_aircraft_path, class: "ms-3 text-success text-decoration-none" %>
+        <% end %>
+        <h4>You have <%= @users_aircrafts.count %> aircrafts</h4>
+      </h1>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <% @users_aircrafts.each do |aircraft| %>
+      <div class="col-md-4">
+        <div class="flat-card align-items-center">
+          <div class="flat-card-image" style="background-image: url('<%= aircraft.picture_url %>')"></div>
+          <div class="flat-card-content">
+            <div class="flat-card-title">
+              <h4><%= aircraft.model %></h4>
+            </div>
+            <p><%= aircraft.description %></p>
+            <div class="flex">
+              <div class="flex align-items-center">
+                <i class="fa-solid fa-people-line"></i>
+                <span><%= aircraft.capacity %></span>
+              </div>
+              <div class="flex align-items-center ms-3">
+                <i class="fa-solid fa-dollar-sign"></i>
+                <span> <%= aircraft.price.round.to_fs(:delimited) %>/h</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flat-card-actions d-flex justify-content-end">
+            <% if user_signed_in? %>
+            <%= link_to "View", aircraft_path(aircraft), class: "ms-3 my-1 btn btn-primary" %>
+            <% else %>
+            <%= link_to "View", aircraft_path(aircraft), class: "ms-3 my-1 btn btn-primary" %>
+            <% end  %>
+          </div>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
