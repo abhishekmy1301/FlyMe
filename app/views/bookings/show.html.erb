@@ -1,14 +1,14 @@
-<div class="text-center bg-light py-2 border border-dark shadow-lg p-3 mb-5 bg-white rounded">
-  <h1>Aircraft Model: <%= @booking.aircraft.model %></h1>
+<div class="container text-center bg-light py-2 border border-dark shadow-lg p-3 mb-5 bg-white rounded  justify-content-center">
+  <h2>Aircraft Model: <%= @booking.aircraft.model %></h1>
   <img  src=<%=@booking.aircraft.picture_url%> height="300px" class="py-3">
   <h2>Departure Time: <%= @booking.departure_time %></h2>
-  <h2><%= "#{@booking.takeoff.upcase} ✈ #{@booking.landing.upcase}"%></h2>
+  <h1><%= "#{@booking.takeoff.upcase} ✈ #{@booking.landing.upcase}"%></h2>
   <div class="flat-card-actions">
-    <%= link_to "Edit", edit_booking_path(@booking), class: "ms-3 text-warning" %>
-    <%= link_to "Remove", booking_path(@booking),
+    <%= link_to "Edit", edit_booking_path(@booking), class: "ms-3 btn text-light btn-warning" %>
+    <%= link_to "Cancel Booking", booking_path(@booking),
         data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-        class: "ms-3 text-danger"
+        class: "ms-3 text-light btn btn-danger"
     %>
-    <%= link_to "Back to all bookings", bookings_path, class: "ms-3 text-primary" %>
+    <%= link_to "Back to all bookings", bookings_path, class: "ms-3  btn btn-primary" %>
   </div>
 </div>

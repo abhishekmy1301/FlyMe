@@ -19,7 +19,12 @@
 <div class="container index mt-3">
   <div class="row">
     <div class="col-12">
-      <h1>Range of aircrafts <%= link_to "+", new_aircraft_path, class: "ms-3 text-success text-decoration-none" %></h1>
+      <h1>
+        Range of aircrafts
+        <% if user_signed_in? %>
+        <%= link_to "+", new_aircraft_path, class: "ms-3 text-success text-decoration-none" %>
+        <% end %>
+      </h1>
     </div>
   </div>
 
@@ -32,7 +37,8 @@
       <% end %>
     </div>
   </div>
-
+  <%= @users_aircrafts = @aircrafts.select { |aircraft| aircraft.user == current_user } %>
+  <%= @other_aircrafts = @aircrafts.reject { |aircraft| aircraft.user == current_user } %>
   <div class="row">
     <% @aircrafts.each do |aircraft| %>
       <div class="col-md-4">
