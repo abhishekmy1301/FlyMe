@@ -20,7 +20,7 @@
   <div class="row">
     <div class="col-12">
       <h1>
-        Range of aircrafts
+        Aircraft Fleets
         <% if user_signed_in? %>
         <%= link_to "+", new_aircraft_path, class: "ms-3 text-success text-decoration-none" %>
         <% end %>
@@ -33,12 +33,14 @@
       <% if @query %>
         <p>You searched for <strong><%= @query %></strong>. We found <%= @aircrafts.count %> aircrafts out of our <%= Aircraft.count %> on our website.</p>
       <% else %>
-        <p>Select an aircraft</p>
+        <h4>Select an aircraft</h4>
       <% end %>
     </div>
   </div>
+
   <% @users_aircrafts = @aircrafts.select { |aircraft| aircraft.user == current_user } %>
   <% @other_aircrafts = @aircrafts.reject { |aircraft| aircraft.user == current_user } %>
+  
   <div class="row">
     <% @aircrafts.each do |aircraft| %>
       <div class="col-md-4">
