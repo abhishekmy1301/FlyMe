@@ -1,8 +1,11 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "https://static.vecteezy.com/system/resources/previews/000/620/372/original/aircraft-airplane-airline-logo-label-journey-air-travel-airliner-symbol-vector-illustration.jpg" %>
+    <div class="navbar-logo">
+    <%= link_to root_path, class: "navbar-brand d-flex align-items-center justify-space-evenly" do %>
+       <%= image_tag asset_path('FlyMe-white-logo.png'), width: 70, height:30 %>
+      <%# <h1 id="logo-text">FlyMe</h1> %>
     <% end %>
+      </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -12,10 +15,10 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "My Aircrafts", aircrafts_path, class: "nav-link" %>
+            <%= link_to "Aircrafts", aircrafts_path, class: "nav-link", style: "color: white;" %>
           </li>
           <li class="nav-item">
-            <%= link_to "My Bookings", bookings_path, class: "nav-link" %>
+            <%= link_to "Bookings", bookings_path, class: "nav-link", style: "color: white;" %>
           </li>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
