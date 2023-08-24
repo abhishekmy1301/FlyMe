@@ -7,6 +7,8 @@
     <%= csp_meta_tag %>
     <link rel="icon" type="image/x-icon" href="https://static.vecteezy.com/system/resources/previews/000/620/372/original/aircraft-airplane-airline-logo-label-journey-air-travel-airliner-symbol-vector-illustration.jpg">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "flight_path", "data-turbolinks-track" => true  %>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
     <%= javascript_importmap_tags %>
   </head>
 
@@ -18,4 +20,6 @@
       <%= yield %>
     <%# </div> %>
   </body>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
+  <%# <script src="../app/javascript/flight_path.js"></script> %>
 </html>
