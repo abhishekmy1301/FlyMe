@@ -1,29 +1,32 @@
-<div class="d-flex flex-column bg-light py-2 border border-dark shadow-lg m-4">
-  <br>
-  <div class="p-2 d-flex justify-content-center">
-    <h2>Aircraft Model: <%= @aircraft.model %></h2>
-  </div>
-  <div class="p-5 d-flex justify-content-center">
-    <img  src=<%=@aircraft.picture_url%> height="300px" class="py-3">
-    <div class="p-4">
-      <br>
-      <br>
-      <h5><%= @aircraft.description %></h5>
-      <br>
-      <h5>Capacity: <%= @aircraft.capacity %></h5>
-      <h5> Rate per hour: $<%= @aircraft.price.round.to_fs(:delimited) %></h5>
+<div class="container text-center bg-light py-2 border border-dark shadow-lg p-3 mb-5 bg-white rounded">
+  <h1>Aircraft Model: <%= @aircraft.model %></h1>
+  <h5>
+    Owned By: <%= @aircraft.user.email %>
+    <% if current_user == @aircraft.user %>
+      (You)
+    <% end %>
+  </h5>
+  <img  src=<%=@aircraft.picture_url%> height="300px" class="py-3">
+  <h4><%= @aircraft.description %></h4>
+  <h2>Capacity: <%= @aircraft.capacity %></h2>
+  <h2> Rate per hour: $<%= @aircraft.price.round.to_fs(:delimited) %></h2>
+
+  <div class="flat-card-actions d-flex justify-content-center">
+    <% if user_signed_in? %>
+    <div class="border-dark my-3">
+      <%= link_to "Add Booking", new_aircraft_booking_path(@aircraft), class: "ms-3 text-success text-decoration-none" %>
+
+      <% if current_user == @aircraft.user %>
+        <%= link_to "Edit", edit_aircraft_path(@aircraft), class: "ms-3 text-warning text-decoration-none" %>
+        <%= link_to "Remove", aircraft_path(@aircraft),
+            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+            class: "ms-3 text-danger text-decoration-none"
+        %>
+      <% end %>
+      <%= link_to "Back to all aircrafts", aircrafts_path, class: "ms-3 text-primary text-decoration-none border-dark my-3" %>
     </div>
-  </div>
-  <div class="flat-card-actions d-flex justify-content-center p-2">
-    <%# <%= link_to "More info", aircraft_path(aircraft) %>
-    <div class="border-dark my-3 ">
-      <%= link_to "Add Booking", new_aircraft_booking_path(@aircraft), class: "btn btn-outline-success" %>
-      <%= link_to "Edit", edit_aircraft_path(@aircraft), class: "btn btn-outline-warning" %>
-      <%= link_to "Remove", aircraft_path(@aircraft),
-          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-          class: "btn btn-outline-danger"
-      %>
-      <%= link_to "Back to all aircrafts", aircrafts_path, class: "btn btn-outline-primary" %>
-    </div>
+    <% else %>
+      <%= link_to "Back to all aircrafts", aircrafts_path, class: "ms-3 text-primary text-decoration-none border-dark my-3" %>
+    <% end %>
   </div>
 </div>
