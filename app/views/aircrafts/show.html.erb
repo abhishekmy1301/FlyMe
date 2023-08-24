@@ -9,7 +9,7 @@
       <h5><%= @aircraft.description %></h5>
       <br>
       <h5>Capacity: <%= @aircraft.capacity %></h5>
-      <h5> Rate per hour: $<%= @aircraft.price.round.to_fs(:delimited) %></h5>
+      <h5> Rate per hour: $<%= ((@aircraft.price.to_f.round())).to_fs(:delimited) %></h5>
       <br>
       <p>
         Owned By: <%= @aircraft.user.email %>
@@ -30,10 +30,19 @@
               %>
             <% end %>
         <% end %>
-        <%= link_to "Back to all aircrafts", aircrafts_path, class: "button-35  mx-1" %>
+        <%= link_to "Back to all aircrafts", aircrafts_path, class: "button-35 mx-1" %>
           </div>
       </div>
     </div>
   </div>
 
+
+
+  <div data-controller="toggle" class="mt-5 mx-3 p-2 justify-content-center" >
+  <button data-action="click->toggle#fire" class="btn btn-outline-primary button-35">Add a new booking</button>
+    <div class="d-none" data-toggle-target="togglableElement">
+      <%= render "bookings/form", booking: @booking %>
+    </div>
+
+  </div>
 </div>
