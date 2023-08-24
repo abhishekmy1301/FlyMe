@@ -25,15 +25,15 @@
 
       <div class="flat-card-actions d-flex justify-content-end">
         <% if user_signed_in? %>
-            <button data-action="click->toggle#fire" class="btn btn-outline-primary button-35">Add a new booking</button>
+            <button data-action="click->toggle#fire" class="button-35" style="color: green">Add a new booking</button>
 
-            <%= link_to "Add Booking", new_aircraft_booking_path(@aircraft),
+            <%# <%= link_to "Add Booking", new_aircraft_booking_path(@aircraft),
             class: "button-35 mx-1", style:"color: green;"%>
             <% if current_user == @aircraft.user %>
               <%= link_to "Edit", edit_aircraft_path(@aircraft), class: "button-35  mx-1", style:"color: orange;"%>
               <%= link_to "Remove", aircraft_path(@aircraft),
                   data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                  class: "btn btn-outline-danger button-35 mx-1", style:"color: red;"
+                  class: " button-35 mx-1", style:"color: red;"
               %>
             <% end %>
         <% end %>
