@@ -19,30 +19,34 @@
       </p>
       <div class="flat-card-actions d-flex justify-content-end">
           <div class="border-dark my-2 mx-5">
-        <% if user_signed_in? %>
-            <%= link_to "Add Booking", new_aircraft_booking_path(@aircraft),
-            class: "button-35 mx-1", style:"color: green;"%>
-            <% if current_user == @aircraft.user %>
-              <%= link_to "Edit", edit_aircraft_path(@aircraft), class: "button-35  mx-1", style:"color: orange;"%>
-              <%= link_to "Remove", aircraft_path(@aircraft),
-                  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                  class: "btn btn-outline-danger  mx-1", style:"color: red;"
-              %>
-            <% end %>
-        <% end %>
-        <%= link_to "Back to all aircrafts", aircrafts_path, class: "button-35 mx-1" %>
+
           </div>
       </div>
     </div>
   </div>
 
+  <div data-controller="toggle">
+    <div class="mt-5 mx-3 p-2 justify-content-center">
 
 
-  <div data-controller="toggle" class="mt-5 mx-3 p-2 justify-content-center" >
-  <button data-action="click->toggle#fire" class="btn btn-outline-primary button-35">Add a new booking</button>
-    <div class="d-none" data-toggle-target="togglableElement">
-      <%= render "bookings/form", booking: @booking %>
+      <% if user_signed_in? %>
+          <button data-action="click->toggle#fire" class="btn btn-outline-primary button-35">Add a new booking</button>
+
+          <%= link_to "Add Booking", new_aircraft_booking_path(@aircraft),
+          class: "button-35 mx-1", style:"color: green;"%>
+          <% if current_user == @aircraft.user %>
+            <%= link_to "Edit", edit_aircraft_path(@aircraft), class: "button-35  mx-1", style:"color: orange;"%>
+            <%= link_to "Remove", aircraft_path(@aircraft),
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                class: "btn btn-outline-danger button-35 mx-1", style:"color: red;"
+            %>
+          <% end %>
+      <% end %>
+      <%= link_to "Back to all aircrafts", aircrafts_path, class: "button-35 mx-1" %>
+
+      <div class="d-none" data-toggle-target="togglableElement">
+            <%= render "bookings/form", booking: @booking %>
+      </div>
     </div>
-
   </div>
 </div>
