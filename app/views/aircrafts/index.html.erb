@@ -37,8 +37,8 @@
       <% end %>
     </div>
   </div>
-  <%= @users_aircrafts = @aircrafts.select { |aircraft| aircraft.user == current_user } %>
-  <%= @other_aircrafts = @aircrafts.reject { |aircraft| aircraft.user == current_user } %>
+  <% @users_aircrafts = @aircrafts.select { |aircraft| aircraft.user == current_user } %>
+  <% @other_aircrafts = @aircrafts.reject { |aircraft| aircraft.user == current_user } %>
   <div class="row">
     <% @aircrafts.each do |aircraft| %>
       <div class="col-md-4">
