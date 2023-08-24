@@ -6,13 +6,25 @@
         <h2>FLEET</h2>
     </div>
     <div class="p-2 flex-column text-center">
-      <h1 class="h1-text-large"><%= @aircrafts.count %></h1>
+      <h1 class="h1-text-large" id="counter"><%= @aircrafts.count %></h1>
       <h2>AIRCRAFTS</h2>
     </div>
     <div class="p-2 flex-column text-center">
       <h1 class="h1-text-large"><%= @bookings.count %></h1>
       <h2>BOOKINGS</h2>
     </div>
+    <script>
+
+        let counts = setInterval(updated);
+        let upto = 0;
+        function updated() {
+            let count = document.querySelector("#counter");
+            count.innerHTML = ++upto;
+            if (upto === parseInt('<%= @aircrafts.count %>')) {
+                clearInterval(counts);
+            }
+        }
+    </script>
   </div>
 </div>
 
