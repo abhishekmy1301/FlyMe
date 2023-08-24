@@ -2,6 +2,7 @@ class AircraftsController < ApplicationController
   before_action :set_aircraft, only: [:show, :edit, :update, :destroy]
 
   def index
+    @bookings = Booking.all
     if params[:query].present?
       @query = params[:query]
       @aircrafts = Aircraft.where("model LIKE ?", "%#{params[:query]}%")

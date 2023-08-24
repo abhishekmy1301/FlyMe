@@ -2,6 +2,7 @@
 body, html {
   margin: 0;
   padding: 0;
+  font-family: "Dancing Script";
 }
 .video-container {
   display: flex;
@@ -9,11 +10,12 @@ body, html {
   .header {
     color: white;
     text-align: center;
+
     .button-46 {
       align-items: center;
       background-color: rgba(240, 240, 240, 0.26);
       border: 1px solid #DFDFDF;
-      border-radius: 16px;
+      border-radius: 55px;
       box-sizing: border-box;
       color: white;
       cursor: pointer;
@@ -41,7 +43,7 @@ body, html {
       background-color: rgba(0, 102, 255, 0.836);
       border-color: rgba(0, 0, 0, 0.19);
     }
-
+    
     h1{
       font-family: "Dancing Script";
       font-size: 5rem;
