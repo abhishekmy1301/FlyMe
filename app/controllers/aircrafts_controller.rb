@@ -6,6 +6,7 @@ class AircraftsController < ApplicationController
     if params[:query].present?
       @query = params[:query]
       @aircrafts = Aircraft.where("model LIKE ?", "%#{params[:query]}%")
+
       # Preventing SQL Injection and Database error for
       # unknown characters
     else
