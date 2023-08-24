@@ -36,14 +36,15 @@
               </div>
             </div>
           </div>
-          <% if user_signed_in? %>
-          <div class="flat-card-actions d-flex justify-content-center">
-            <%= link_to "View", aircraft_path(aircraft), class: "ms-3 my-1 btn btn-primary" %>
 
-          </div>
-          <% else %>
+          <div class="flat-card-actions d-flex justify-content-end">
+            <% if user_signed_in? %>
             <%= link_to "View", aircraft_path(aircraft), class: "ms-3 my-1 btn btn-primary" %>
-          <% end  %>
+            <% else %>
+            <%= link_to "View", aircraft_path(aircraft), class: "ms-3 my-1 btn btn-primary" %>
+            <% end  %>
+          </div>
+
         </div>
       </div>
     <% end %>
