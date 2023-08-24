@@ -1,13 +1,31 @@
-<div class="container">
+  <% @users_bookings = @bookings.select { |booking| booking.user == current_user } %>
+  <% @other_bookings = @bookings.select { |booking| booking.aircraft.user == current_user } %>
+
+<div class="container text-center">
+  <h2>Your Bookings</h2>
+  <% if @users_bookings.count == 0 %>
+    <em>You have no bookings.</em>
+  <% end %>
   <ul>
-  <% @bookings.each_with_index do |booking, i| %>
+  <% @users_bookings.each_with_index do |booking, i| %>
     <div id="booking" class="row py-4 border border-dark my-3 bg-gradient text-center rounded">
         <%= link_to booking_path(booking), class: "text-decoration-none text-dark " do %>
           <%= "#{i + 1}. From #{booking.takeoff.upcase} to #{booking.landing.upcase} at #{booking.departure_time} \t Booking id: #{booking.id}" %>
         <% end %>
     </div>
-
-
+  <% end %>
+  </ul>
+  <ul>
+  <h2>People who booked your aircrafts</h2>
+  <% if @other_bookings.count == 0 %>
+    <em>Nobody booked your aircrafts.</em>
+  <% end %>
+  <% @other_bookings.each_with_index do |booking, i| %>
+    <div id="booking" class="row py-4 border border-dark my-3 bg-gradient text-center rounded">
+        <%= link_to booking_path(booking), class: "text-decoration-none text-dark " do %>
+          <%= "#{i + 1}. From #{booking.takeoff.upcase} to #{booking.landing.upcase} at #{booking.departure_time} \t Booking id: #{booking.id}" %>
+        <% end %>
+    </div>
   <% end %>
   </ul>
 </div>
