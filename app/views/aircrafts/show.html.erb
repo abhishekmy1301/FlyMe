@@ -1,4 +1,4 @@
-<div class="d-flex flex-column bg-light py-2 border border-dark shadow-lg m-4">
+<div class="d-flex flex-column bg-light py-2 border border-dark shadow-lg" style="margin: 20px 250px;">
   <br>
   <div class="p-2 d-flex justify-content-center">
     <h2>Aircraft Model: <%= @aircraft.model %></h2>
@@ -17,20 +17,27 @@
         (You)
         <% end %>
       </p>
-      <div class="flat-card-actions d-flex justify-content-end">
-          <div class="border-dark my-2 mx-5">
-        <% if user_signed_in? %>
-            <%= link_to "Add Booking", new_aircraft_booking_path(@aircraft),
-            class: "button-35 mx-1", style:"color: green;"%>
-            <% if current_user == @aircraft.user %>
-              <%= link_to "Edit", edit_aircraft_path(@aircraft), class: "button-35  mx-1", style:"color: orange;"%>
-              <%= link_to "Remove", aircraft_path(@aircraft),
-                  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                  class: "btn btn-outline-danger  mx-1", style:"color: red;"
-              %>
+      <div class="container">
+          <div class="row align-items-center justify-content-between">
+            <% if user_signed_in? %>
+              <div class="col">
+                <%= link_to "Add Booking", new_aircraft_booking_path(@aircraft), class: "button-35", style:"color: green;"%>
+              </div>
+              <% if current_user == @aircraft.user %>
+                <div class="col">
+                 <%= link_to "Edit", edit_aircraft_path(@aircraft), class: "button-35", style:"color: orange;"%>
+                </div>
+                <div class="col">
+                  <%= link_to "Remove", aircraft_path(@aircraft),
+                    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                    class: "button-35", style:"color: red;"
+                  %>
+                </div>
+              <% end %>
             <% end %>
-        <% end %>
-        <%= link_to "Back to all aircrafts", aircrafts_path, class: "button-35  mx-1" %>
+            <div class="col">
+              <%= link_to "Back to all aircrafts", aircrafts_path, class: "button-35" %>
+            </div>
           </div>
       </div>
     </div>
