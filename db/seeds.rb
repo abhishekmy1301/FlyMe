@@ -11,13 +11,18 @@ puts "Creating users"
 
 # create 2 users
 user1 = User.new(
-  email: "jsinclair@outlook.com",
+  email: "billgate@outlook.com",
   password: "123456"
 )
 
 user2 = User.new(
-  email: "jdoe@gmail.com",
+  email: "kloekardashian@gmail.com",
   password: "654321"
+)
+
+user3 = User.new(
+  email: "elonmusk@x.com",
+  password: "123456"
 )
 
 user1.save
