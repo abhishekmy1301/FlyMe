@@ -6,17 +6,16 @@
         <h2>FLEET</h2>
     </div>
     <div class="p-2 flex-column text-center">
-        <h1 class="h1-text-large"><%= @aircrafts.count %></h1>
-        <h2>AIRCRAFTS</h2>
+      <h1 class="h1-text-large"><%= @aircrafts.count %></h1>
+      <h2>AIRCRAFTS</h2>
     </div>
     <div class="p-2 flex-column text-center">
-      <a class="text-decoration-none" href="/bookings">
-        <h1 class="h1-text-large"><%= @bookings.count %></h1>
-        <h2>BOOKINGS</h2>
-      </a>
+      <h1 class="h1-text-large"><%= @bookings.count %></h1>
+      <h2>BOOKINGS</h2>
     </div>
   </div>
 </div>
+
 <div class="container index mt-3">
   <div class="row">
     <div class="col-12">
@@ -41,6 +40,7 @@
   <div class="row">
     <% @other_aircrafts.each do |aircraft| %>
       <div class="col-md-4">
+
           <%= link_to aircraft_path(aircraft), class: "text-decoration-none text-dark" do %>
 
             <div class="flat-card align-items-center ">
@@ -58,6 +58,8 @@
                     <%# <p data-action="click->toggle#fire">Collapse/Expand</p> %>
                   </div>
 
+
+
               </div>
 
               <div class="flat-card-actions d-flex justify-content-end">
@@ -74,6 +76,7 @@
               </div>
 
             </div>
+
 
           <% end %>
         </div>
@@ -115,6 +118,8 @@
                     <%# <p data-action="click->toggle#fire">Collapse/Expand</p> %>
                   </div>
 
+
+
               </div>
 
               <div class="flat-card-actions d-flex justify-content-end">
@@ -131,6 +136,7 @@
               </div>
 
             </div>
+
 
           <% end %>
         </div>
