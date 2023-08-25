@@ -41,7 +41,19 @@
   padding: 24px;
   background-color: gainsboro;
   height: 280px;
-  overflow: scroll;
+  // overflow: scroll;
+  // text-overflow: ellipsis;
+}
+
+
+
+
+.test {
+  // height: 200px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
 }
 
 .flat-card-actions {
