@@ -17,8 +17,11 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.aircraft = Aircraft.find(params[:aircraft_id])
-    @booking.save
-    redirect_to booking_path(@booking)
+    if @booking.save!
+      redirect_to booking_path(@booking)
+    else
+      render 'aircrafts/show', status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -26,7 +29,7 @@ class BookingsController < ApplicationController
 
   def update
     if @booking.update(booking_params)
-    redirect_to booking_path(@booking)
+      redirect_to booking_path(@booking)
     else
       render :new, status: :unprocessable_entity
     end
