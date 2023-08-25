@@ -9,7 +9,7 @@
       <h5><%= @aircraft.description %></h5>
       <br>
       <h5>Capacity: <%= @aircraft.capacity %></h5>
-      <h5> Rate per hour: $<%= ((@aircraft.price.to_f.round())).to_fs(:delimited) %></h5>
+      <h5> Rate per hour: $<%=  sprintf('%.2f', @aircraft.price ) %></h5>
       <br>
       <p>
         Owned By: <%= @aircraft.user.email %>
@@ -25,8 +25,9 @@
 
       <div class="flat-card-actions d-flex justify-content-end">
         <% if user_signed_in? %>
+            <% if current_user != @aircraft.user %>
             <button data-action="click->toggle#fire" class="button-35" style="color: green">Add a new booking</button>
-
+            <% end %>
             <%# <%= link_to "Add Booking", new_aircraft_booking_path(@aircraft),
             class: "button-35 mx-1", style:"color: green;"%>
             <% if current_user == @aircraft.user %>
