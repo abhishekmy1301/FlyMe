@@ -3,20 +3,24 @@
   background-position: center;
   // padding: 0 0;
   // height: 600px;
+
 }
 
 .h1-text-large {
   margin: 0;
   color: white;
   // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 75px;
-  font-weight: bold;
+  font-size: 80px;
+  // font-weight: bold;
 }
 
 .banner h2 {
-  font-size: 25px;
+  font-size: 20px;
   color: white;
-  // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-family: Helvetica, sans-serif;
+  letter-spacing: 2px;
+  font-weight: lighter;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 .landing-stats {
   width: 1000px;
