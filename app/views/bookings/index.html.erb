@@ -1,7 +1,7 @@
   <% @users_bookings = @bookings.select { |booking| booking.user == current_user } %>
   <% @other_bookings = @bookings.select { |booking| booking.aircraft.user == current_user } %>
 
-<div class="container text-center">
+<div class="container text-center" data-controller="toggle">
   <h2>Your Bookings</h2>
   <% if @users_bookings.count == 0 %>
     <em>You have no bookings.</em>
@@ -9,11 +9,14 @@
   <ul>
   <% @users_bookings.each_with_index do |booking, i| %>
     <div id="booking" class="row py-4 border border-dark my-3 bg-gradient text-center rounded">
-        <%= link_to booking_path(booking), class: "text-decoration-none text-dark " do %>
+        <%= link_to booking_path(booking), class: "text-decoration-none text-dark ", data_action:"click->toggle#fire" do %>
           <%= "#{i + 1}. From #{booking.takeoff.upcase} to #{booking.landing.upcase} at #{booking.departure_time} \t Booking id: #{booking.id}" %>
         <% end %>
     </div>
   <% end %>
+  <div class="d-none" data-toggle-target="togglableElement">
+            <%= render "form", booking: @booking %>
+      </div>
   </ul>
   <ul>
   <h2>People who booked your aircrafts</h2>
