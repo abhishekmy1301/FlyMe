@@ -18,10 +18,26 @@
         <% end %>
       </p>
     </div>
-  </div>
+    <div class="p-5 d-flex justify-content-center">
+      <img  src=<%=@aircraft.picture_url%> height="300px" class="py-3">
+      <div class="p-4 d-flex flex-column justify-content-center">
+        <h5><%= @aircraft.description %></h5>
+        <br>
+        <h5>Capacity: <%= @aircraft.capacity %></h5>
+        <h5> Rate per hour: $<%= ((@aircraft.price.to_f.round())).to_fs(:delimited) %></h5>
+        <br>
+        <p>
+          Owned By: <%= @aircraft.user.email %>
+          <% if current_user == @aircraft.user %>
+          (You)
+          <% end %>
+        </p>
 
-  <div data-controller="toggle">
-    <div class="mt-5 mx-3 p-2 justify-content-center ">
+      </div>
+    </div>
+    <div data-controller="toggle">
+      <div class="mt-5 mx-3 p-2 justify-content-center ">
+
 
       <div class="flat-card-actions d-flex justify-content-end">
         <% if user_signed_in? %>
@@ -42,8 +58,9 @@
       </div>
 
 
-      <div class="d-none" data-toggle-target="togglableElement">
-            <%= render "bookings/form", booking: @booking %>
+        <div class="d-none" data-toggle-target="togglableElement">
+              <%= render "bookings/form", booking: @booking %>
+        </div>
       </div>
     </div>
   </div>
