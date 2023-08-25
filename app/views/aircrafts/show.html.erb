@@ -1,49 +1,50 @@
-<div class="d-flex flex-column bg-white py-2 border border-dark shadow-lg m-4">
-  <br>
-  <div class="p-2 d-flex justify-content-center">
-    <h2>Aircraft Model: <%= @aircraft.model %></h2>
-  </div>
-  <div class="p-5 d-flex justify-content-center">
-    <img  src=<%=@aircraft.picture_url%> height="300px" class="py-3">
-    <div class="p-4 d-flex flex-column justify-content-center">
-      <h5><%= @aircraft.description %></h5>
-      <br>
-      <h5>Capacity: <%= @aircraft.capacity %></h5>
-      <h5> Rate per hour: $<%=  sprintf('%.2f', @aircraft.price ) %></h5>
-      <br>
-      <p>
-        Owned By: <%= @aircraft.user.email %>
-        <% if current_user == @aircraft.user %>
-        (You)
-        <% end %>
-      </p>
+<div class="banner-show banner" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(https://images.unsplash.com/photo-1587279535322-b20697908487?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80);">
+  <%= render "shared/navbar" %>
+  <div class="d-flex flex-column py-2 m-4">
+    <br>
+    <div class="p-2 d-flex justify-content-center">
+      <h2>Aircraft Model: <%= @aircraft.model %></h2>
     </div>
-  </div>
-
-  <div data-controller="toggle">
-    <div class="mt-5 mx-3 p-2 justify-content-center ">
-
-      <div class="flat-card-actions d-flex justify-content-end">
-        <% if user_signed_in? %>
-            <% if current_user != @aircraft.user %>
-            <button data-action="click->toggle#fire" class="button-35" style="color: green">Add a new booking</button>
-            <% end %>
-            <%# <%= link_to "Add Booking", new_aircraft_booking_path(@aircraft),
-            class: "button-35 mx-1", style:"color: green;"%>
-            <% if current_user == @aircraft.user %>
-              <%= link_to "Edit", edit_aircraft_path(@aircraft), class: "button-35  mx-1", style:"color: orange;"%>
-              <%= link_to "Remove", aircraft_path(@aircraft),
-                  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                  class: " button-35 mx-1", style:"color: red;"
-              %>
-            <% end %>
-        <% end %>
-        <%= link_to "Back to all aircrafts", aircrafts_path, class: "button-35 mx-1" %>
+    <div class="p-5 justify-content-center">
+      <img  src="https://www.vistajet.com/globalassets/aircraft/vistajet-bombardier-global-6000.png?width=1929&height=523&mode=stretch"
+            height="250px">
+      <div class="p-4 d-flex flex-column justify-content-center text-center">
+        <h5><%= @aircraft.description %></h5>
+        <br>
+        <h5>Capacity: <%= @aircraft.capacity %></h5>
+        <h5> Rate per hour: $<%= ((@aircraft.price.to_f.round())).to_fs(:delimited) %></h5>
+        <br>
+        <p>
+          Owned By: <%= @aircraft.user.email %>
+          <% if current_user == @aircraft.user %>
+          (You)
+          <% end %>
+        </p>
       </div>
+    </div>
 
+    <div data-controller="toggle">
+      <div class="mt-5 mx-3 p-2 justify-content-center ">
+        <div class="flat-card-actions d-flex justify-content-end">
+          <% if user_signed_in? %>
+              <button data-action="click->toggle#fire" class="button-35" style="color: green">Add a new booking</button>
 
-      <div class="d-none" data-toggle-target="togglableElement">
-            <%= render "bookings/form", booking: @booking %>
+              <%# <%= link_to "Add Booking", new_aircraft_booking_path(@aircraft),
+              class: "button-35 mx-1", style:"color: green;"%>
+              <% if current_user == @aircraft.user %>
+                <%= link_to "Edit", edit_aircraft_path(@aircraft), class: "button-35  mx-1", style:"color: orange;"%>
+                <%= link_to "Remove", aircraft_path(@aircraft),
+                    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                    class: " button-35 mx-1", style:"color: red;"
+                %>
+              <% end %>
+          <% end %>
+          <%= link_to "Back to all aircrafts", aircrafts_path, class: "button-35 mx-1" %>
+        </div>
+
+        <div class="d-none" data-toggle-target="togglableElement">
+              <%= render "bookings/form", booking: @booking %>
+        </div>
       </div>
     </div>
   </div>
