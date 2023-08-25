@@ -6,16 +6,17 @@
         <h2>FLEET</h2>
     </div>
     <div class="p-2 flex-column text-center">
-      <h1 class="h1-text-large"><%= @aircrafts.count %></h1>
-      <h2>AIRCRAFTS</h2>
+        <h1 class="h1-text-large"><%= @aircrafts.count %></h1>
+        <h2>AIRCRAFTS</h2>
     </div>
     <div class="p-2 flex-column text-center">
-      <h1 class="h1-text-large"><%= @bookings.count %></h1>
-      <h2>BOOKINGS</h2>
+      <a class="text-decoration-none" href="/bookings">
+        <h1 class="h1-text-large"><%= @bookings.count %></h1>
+        <h2>BOOKINGS</h2>
+      </a>
     </div>
   </div>
 </div>
-
 <div class="container index mt-3">
   <div class="row">
     <div class="col-12">
@@ -45,11 +46,16 @@
       <div class="col-md-4">
         <div class="flat-card align-items-center">
           <div class="flat-card-image" style="background-image: url('<%= aircraft.picture_url %>')"></div>
-          <div class="flat-card-content">
+          <div class="flat-card-content overflow-hidden">
             <div class="flat-card-title">
               <h4><%= aircraft.model %></h4>
             </div>
-            <p><%= aircraft.description %></p>
+            <% max_chars = 100 %>
+            <% if aircraft.description.length > max_chars %>
+              <p><%= truncate(aircraft.description, length: max_chars) %></p>
+            <% else %>
+              <p><%= aircraft.description %></p>
+            <% end %>
             <div class="flex">
               <div class="flex align-items-center">
                 <i class="fa-solid fa-people-line"></i>
@@ -63,13 +69,8 @@
           </div>
 
           <div class="flat-card-actions d-flex justify-content-end">
-            <% if user_signed_in? %>
-            <%= link_to "View", aircraft_path(aircraft), class: "ms-3 my-1 btn btn-primary" %>
-            <% else %>
-            <%= link_to "View", aircraft_path(aircraft), class: "ms-3 my-1 btn btn-primary" %>
-            <% end  %>
+            <%= link_to "View details »", aircraft_path(aircraft), class: "ms-3 my-1 btn btn-secondary" %>
           </div>
-
         </div>
       </div>
     <% end %>
@@ -94,11 +95,16 @@
       <div class="col-md-4">
         <div class="flat-card align-items-center">
           <div class="flat-card-image" style="background-image: url('<%= aircraft.picture_url %>')"></div>
-          <div class="flat-card-content">
+          <div class="flat-card-content overflow-hidden">
             <div class="flat-card-title">
               <h4><%= aircraft.model %></h4>
             </div>
-            <p><%= aircraft.description %></p>
+            <% max_chars = 100 %>
+            <% if aircraft.description.length > max_chars %>
+              <p><%= truncate(aircraft.description, length: max_chars) %></p>
+            <% else %>
+              <p><%= aircraft.description %></p>
+            <% end %>
             <div class="flex">
               <div class="flex align-items-center">
                 <i class="fa-solid fa-people-line"></i>
@@ -112,13 +118,8 @@
           </div>
 
           <div class="flat-card-actions d-flex justify-content-end">
-            <% if user_signed_in? %>
-            <%= link_to "View", aircraft_path(aircraft), class: "ms-3 my-1 btn btn-primary" %>
-            <% else %>
-            <%= link_to "View", aircraft_path(aircraft), class: "ms-3 my-1 btn btn-primary" %>
-            <% end  %>
+            <%= link_to "View details »", aircraft_path(aircraft), class: "ms-3 my-1 btn btn-secondary" %>
           </div>
-
         </div>
       </div>
     <% end %>
