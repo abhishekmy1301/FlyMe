@@ -27,8 +27,9 @@
       <div class="mt-5 mx-3 p-2 justify-content-center ">
         <div class="flat-card-actions d-flex justify-content-end">
           <% if user_signed_in? %>
+              <% if current_user != @aircraft.user %>
               <button data-action="click->toggle#fire" class="button-35" style="color: green">Add a new booking</button>
-
+              <% end %>
               <%# <%= link_to "Add Booking", new_aircraft_booking_path(@aircraft),
               class: "button-35 mx-1", style:"color: green;"%>
               <% if current_user == @aircraft.user %>
