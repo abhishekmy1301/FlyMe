@@ -43,36 +43,47 @@
   <div class="row">
     <% @other_aircrafts.each do |aircraft| %>
       <div class="col-md-4">
-        <div class="flat-card align-items-center">
-          <div class="flat-card-image" style="background-image: url('<%= aircraft.picture_url %>')"></div>
-          <div class="flat-card-content">
-            <div class="flat-card-title">
-              <h4><%= aircraft.model %></h4>
-            </div>
-            <p><%= aircraft.description %></p>
-            <div class="flex">
-              <div class="flex align-items-center">
-                <i class="fa-solid fa-people-line"></i>
-                <span><%= aircraft.capacity %></span>
-              </div>
-              <div class="flex align-items-center ms-3">
-                <i class="fa-solid fa-dollar-sign"></i>
-                <span> <%= aircraft.price.round.to_fs(:delimited) %>/h</span>
-              </div>
-            </div>
-          </div>
 
-          <div class="flat-card-actions d-flex justify-content-end">
-            <% if user_signed_in? %>
-            <%= link_to "View", aircraft_path(aircraft), class: "ms-3 my-1 btn btn-primary" %>
-            <% else %>
-            <%= link_to "View", aircraft_path(aircraft), class: "ms-3 my-1 btn btn-primary" %>
-            <% end  %>
-          </div>
+          <%= link_to aircraft_path(aircraft), class: "text-decoration-none text-dark" do %>
 
+            <div class="flat-card align-items-center ">
+              <div class="flat-card-image" style="background-image: url('<%= aircraft.picture_url %>')"></div>
+              <div class="flat-card-content">
+                <div class="flat-card-title">
+                  <h4><%= aircraft.model %></h4>
+                </div>
+                  <div class="test" data-controller="toggle">
+                    <%# <button data-action="click->toggle#fire" class="button-46" style="color: blue">Show/Hide Description</button> %>
+                    <%# <div class="" data-toggle-target="togglableElement"> %>
+                    <p><%= aircraft.description %></p>
+
+                    <%# </div> %>
+                    <%# <p data-action="click->toggle#fire">Collapse/Expand</p> %>
+                  </div>
+
+
+
+              </div>
+
+              <div class="flat-card-actions d-flex justify-content-end">
+                <div class="flex">
+                  <div class="flex align-items-center">
+                    <i class="fa-solid fa-people-line"></i>
+                    <span><%= aircraft.capacity %></span>
+                  </div>
+                  <div class="flex align-items-center ms-3">
+                    <i class="fa-solid fa-dollar-sign"></i>
+                    <span> <%= sprintf('%.2f', aircraft.price )%>/h</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+          <% end %>
         </div>
-      </div>
-    <% end %>
+      <% end %>
   </div>
 
   <div class="row">
@@ -92,35 +103,46 @@
   <div class="row">
     <% @users_aircrafts.each do |aircraft| %>
       <div class="col-md-4">
-        <div class="flat-card align-items-center">
-          <div class="flat-card-image" style="background-image: url('<%= aircraft.picture_url %>')"></div>
-          <div class="flat-card-content">
-            <div class="flat-card-title">
-              <h4><%= aircraft.model %></h4>
-            </div>
-            <p><%= aircraft.description %></p>
-            <div class="flex">
-              <div class="flex align-items-center">
-                <i class="fa-solid fa-people-line"></i>
-                <span><%= aircraft.capacity %></span>
-              </div>
-              <div class="flex align-items-center ms-3">
-                <i class="fa-solid fa-dollar-sign"></i>
-                <span> <%= aircraft.price.round.to_fs(:delimited) %>/h</span>
-              </div>
-            </div>
-          </div>
 
-          <div class="flat-card-actions d-flex justify-content-end">
-            <% if user_signed_in? %>
-            <%= link_to "View", aircraft_path(aircraft), class: "ms-3 my-1 btn btn-primary" %>
-            <% else %>
-            <%= link_to "View", aircraft_path(aircraft), class: "ms-3 my-1 btn btn-primary" %>
-            <% end  %>
-          </div>
+          <%= link_to aircraft_path(aircraft), class: "text-decoration-none text-dark" do %>
 
+            <div class="flat-card align-items-center ">
+              <div class="flat-card-image" style="background-image: url('<%= aircraft.picture_url %>')"></div>
+              <div class="flat-card-content">
+                <div class="flat-card-title">
+                  <h4><%= aircraft.model %></h4>
+                </div>
+                  <div class="test" data-controller="toggle">
+                    <%# <button data-action="click->toggle#fire" class="button-46" style="color: blue">Show/Hide Description</button> %>
+                    <%# <div class="" data-toggle-target="togglableElement"> %>
+                    <p><%= aircraft.description %></p>
+
+                    <%# </div> %>
+                    <%# <p data-action="click->toggle#fire">Collapse/Expand</p> %>
+                  </div>
+
+
+
+              </div>
+
+              <div class="flat-card-actions d-flex justify-content-end">
+                <div class="flex">
+                  <div class="flex align-items-center">
+                    <i class="fa-solid fa-people-line"></i>
+                    <span><%= aircraft.capacity %></span>
+                  </div>
+                  <div class="flex align-items-center ms-3">
+                    <i class="fa-solid fa-dollar-sign"></i>
+                    <span> <%= sprintf('%.2f', aircraft.price )%>/h</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+          <% end %>
         </div>
-      </div>
     <% end %>
   </div>
 </div>
